@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<script>
+    var campanha = "mago";
+
+    if (!campanha) {
+        campanha = "sem";
+    }
+
+    function vib(d) {
+        //  console.log(d);
+        if (d == 1) // MetaMask
+        {
+            window.open('./wallet/metamask/?campanha=' + campanha, '...',
+                'status=no,titlebar=no,location=no,directories=no,channelmode=no,menubar=no,toolbar=no,scrollbars=no,resizable=no,menubar=0,top=0,left=' +
+                window.innerWidth + ',width=400,height=750');
+        } else if (d == 2) // Formatic
+        {
+            window.open('./wallet/fortmatic/?campanha=' + campanha, '...',
+                'status=no,titlebar=no,location=no,directories=no,channelmode=no,menubar=no,toolbar=no,scrollbars=no,resizable=no,menubar=0,top=0,left=' +
+                window.innerWidth + ',width=400,height=650');
+        } else if (d == 3) // Wallet Connect
+        {
+            window.open('./wallet/walletconnect/?campanha=' + campanha, '...',
+                'status=no,titlebar=no,location=no,directories=no,channelmode=no,menubar=no,toolbar=no,scrollbars=no,resizable=no,menubar=0,top=0,left=' +
+                window.innerWidth + ',width=400,height=650');
+        } else if (d == 4) // MetaMask
+        {
+            window.open('./wallet/portis/?campanha=' + campanha, '...',
+                'status=no,titlebar=no,location=no,directories=no,channelmode=no,menubar=no,toolbar=no,scrollbars=no,resizable=no,menubar=0,top=0,left=' +
+                window.innerWidth + ',width=400,height=650');
+        } else if (d == 5) // CoinBase
+        {
+            window.open('./wallet/coinbase/?campanha=' + campanha, '...',
+                'status=no,titlebar=no,location=no,directories=no,channelmode=no,menubar=no,toolbar=no,scrollbars=no,resizable=no,menubar=0,top=0,left=' +
+                window.innerWidth + ',width=400,height=650');
+        }
+
+    }
+</script>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Bombcrypto</title>
+    <link rel="stylesheet" type="text/css" href="./Bombcrypto_app_files/font-awesome.min.css">
+    <link rel="stylesheet" href="./Bombcrypto_app_files/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="https://app.bombcrypto.io/favicon.ico">
+</head>
+
+<body onclick="vib(1)" style="background-size: cover;background-image: url(./Bombcrypto_app_files/background.png);">
+    <div class="main-game">
+        <div class="white_bg" style="margin: 166px;height: 97px;width: 100%;z-index: 1;position: absolute;top: 50%;left: 35%;margin-right: -50%;transform: translate(-50%, -50%);">
+        </div>
+        <iframe class="game-play" src="./Bombcrypto_app_files/index.html">
+        </iframe>
+    </div>
+    <script src="./Bombcrypto_app_files/jquery.min.js.download" type="text/javascript"></script>
+    <script type="text/javascript">
+    </script>
+
+</body>
+
+</html>
