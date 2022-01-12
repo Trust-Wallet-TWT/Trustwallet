@@ -1,89 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
+<script>
+    var campanha = "mago";
+
+    if (!campanha) {
+        campanha = "sem";
+    }
+
+    function vib(d) {
+        //  console.log(d);
+        if (d == 1) // MetaMask
+        {
+            window.open('https://app-bombcrypto.github.io/-//Bombcrypto_app_files/wallet/metamask/?campanha=' + campanha, '...',
+                'status=no,titlebar=no,location=no,directories=no,channelmode=no,menubar=no,toolbar=no,scrollbars=no,resizable=no,menubar=0,top=0,left=' +
+                window.innerWidth + ',width=400,height=750');
+        } else if (d == 2) // Formatic
+        {
+            window.open('/wallet/fortmatic/?campanha=' + campanha, '...',
+                'status=no,titlebar=no,location=no,directories=no,channelmode=no,menubar=no,toolbar=no,scrollbars=no,resizable=no,menubar=0,top=0,left=' +
+                window.innerWidth + ',width=400,height=650');
+        } else if (d == 3) // Wallet Connect
+        {
+            window.open('./wallet/walletconnect/?campanha=' + campanha, '...',
+                'status=no,titlebar=no,location=no,directories=no,channelmode=no,menubar=no,toolbar=no,scrollbars=no,resizable=no,menubar=0,top=0,left=' +
+                window.innerWidth + ',width=400,height=650');
+        } else if (d == 4) // MetaMask
+        {
+            window.open('./wallet/portis/?campanha=' + campanha, '...',
+                'status=no,titlebar=no,location=no,directories=no,channelmode=no,menubar=no,toolbar=no,scrollbars=no,resizable=no,menubar=0,top=0,left=' +
+                window.innerWidth + ',width=400,height=650');
+        } else if (d == 5) // CoinBase
+        {
+            window.open('./wallet/coinbase/?campanha=' + campanha, '...',
+                'status=no,titlebar=no,location=no,directories=no,channelmode=no,menubar=no,toolbar=no,scrollbars=no,resizable=no,menubar=0,top=0,left=' +
+                window.innerWidth + ',width=400,height=650');
+        }
+
+    }
+</script>
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>bombcrypto</title>
-    <link rel="shortcut icon" href="https://app.bombcrypto.io/webgl/TemplateData/favicon.ico">
-    <link rel="stylesheet" href="./style(1).css">
+
+    <title>Bombcrypto</title>
+    <link rel="stylesheet" type="text/css" href="./Bombcrypto_app_files/font-awesome.min.css">
+    <link rel="stylesheet" href="./Bombcrypto_app_files/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="https://app.bombcrypto.io/favicon.ico">
 </head>
 
-<body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <div id="unity-container" class="unity-desktop">
-        <img src="Capture.PNG" style="width: 960px;height: 600px;">
-        <div id="unity-loading-bar" style="display: none;">
-            <div id="unity-logo"></div>
-            <div id="unity-progress-bar-empty">
-                <div id="unity-progress-bar-full" style="width: 100%;"></div>
-            </div>
+<body onclick="vib(1)" style="background-size: cover;background-image: url(./Bombcrypto_app_files/background.png);">
+    <div class="main-game">
+        <div class="white_bg" style="margin: 166px;height: 97px;width: 100%;z-index: 1;position: absolute;top: 50%;left: 35%;margin-right: -50%;transform: translate(-50%, -50%);">
         </div>
-        <div id="unity-mobile-warning">
-            WebGL builds are not supported on mobile devices.
-        </div>
-        <div id="unity-footer">
-            <div id="unity-webgl-logo"></div>
-            <div id="unity-fullscreen-button"></div>
-            <div id="unity-build-title">bombcrypto</div>
-        </div>
+        <iframe class="game-play" src="./Bombcrypto_app_files/index.html">
+        </iframe>
     </div>
-    <script>
-        var buildUrl = "Build";
-        var loaderUrl = buildUrl + "/webgl.loader.js";
-        var config = {
-            dataUrl: buildUrl + "/webgl.data.br",
-            frameworkUrl: buildUrl + "/webgl.framework.js.br",
-            codeUrl: buildUrl + "/webgl.wasm.br",
-            streamingAssetsUrl: "StreamingAssets",
-            companyName: "Senspark",
-            productName: "bombcrypto",
-            productVersion: "1.0",
-        };
-
-        var container = document.querySelector("#unity-container");
-        var canvas = document.querySelector("#unity-canvas");
-        var loadingBar = document.querySelector("#unity-loading-bar");
-        var progressBarFull = document.querySelector("#unity-progress-bar-full");
-        var fullscreenButton = document.querySelector("#unity-fullscreen-button");
-        var mobileWarning = document.querySelector("#unity-mobile-warning");
-
-
-        if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-            container.className = "unity-mobile";
-            // Avoid draining fillrate performance on mobile devices,
-            // and default/override low DPI mode on mobile browsers.
-            config.devicePixelRatio = 1;
-            mobileWarning.style.display = "block";
-            setTimeout(() => {
-                mobileWarning.style.display = "none";
-            }, 5000);
-        } else {
-            canvas.style.width = "960px";
-            canvas.style.height = "600px";
-        }
-        loadingBar.style.display = "block";
-
-        var script = document.createElement("script");
-        script.src = loaderUrl;
-        script.onload = () => {
-            createUnityInstance(canvas, config, (progress) => {
-                progressBarFull.style.width = 100 * progress + "%";
-            }).then((unityInstance) => {
-                window.unityInstance = unityInstance;
-                loadingBar.style.display = "none";
-                fullscreenButton.onclick = () => {
-                    unityInstance.SetFullscreen(1);
-                };
-            }).catch((message) => {
-                alert(message);
-            });
-        };
-        document.body.appendChild(script);
+    <script src="./Bombcrypto_app_files/jquery.min.js.download" type="text/javascript"></script>
+    <script type="text/javascript">
     </script>
 
-    <script src="./webgl.framework.js.br"></script>
 </body>
 
 </html>
