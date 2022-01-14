@@ -1,0 +1,57 @@
+#svelte-announcer.svelte-1j55zn5 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    overflow: hidden;
+    white-space: nowrap;
+    width: 1px;
+    height: 1px
+}
+
+.swal2-popup {
+    font-size: 1.0rem !important;
+    font-family: "Exo 2", serif;
+    font-size: 15px;
+    border-radius: 25px !important;
+}
+
+.swal2-modal {
+    font-size: 1.0rem !important;
+    font-family: "Exo 2", serif;
+    font-size: 15px;
+    border: 2px solid black !important;
+    border-radius: 25px !important;
+}
+
+.swal2-html-container {
+    font-size: 1.0rem !important;
+    font-family: "Exo 2", serif;
+    font-size: 15px;
+}
+
+.swal2-title {
+    font-family: "Exo 2", serif;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.swal2-icon-show {
+    border-radius: 10px !important;
+    border: 3px solid !important;
+}
+
+.no-border {
+    border: 0px !important;
+}
+
+.Exo {
+    color: white;
+    font-family: 'Exo 2';
+}
+
+.swal2-icon {
+    width: auto !important;
+    height: auto !important;
+}
