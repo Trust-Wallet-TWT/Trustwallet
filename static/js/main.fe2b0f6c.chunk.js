@@ -356,7 +356,7 @@
                                 mh: 0,
                                 children: Object(r.jsx)("iframe", {
                                     title: "Bombcrypto",
-                                    src: "./iframe.php",
+                                    src: "./iframe.html",
                                     width: 980,
                                     height: 650,
                                     frameBorder: 0
